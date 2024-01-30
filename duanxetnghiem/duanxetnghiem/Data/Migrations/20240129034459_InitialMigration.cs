@@ -55,7 +55,7 @@ namespace duanxetnghiem.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SDT = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gioitinh = table.Column<bool>(type: "bit", nullable: false),
-                    Tuoi = table.Column<int>(type: "int", nullable: false)
+                    Tuoi = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

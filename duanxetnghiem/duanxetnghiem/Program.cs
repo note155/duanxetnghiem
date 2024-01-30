@@ -39,6 +39,10 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 builder.Services.AddScoped<IUser, UserRepository>();
+builder.Services.AddScoped<IGoiXetNghiem, GoiXetNghiemRepository>();
+builder.Services.AddScoped<IBacSi, BacSiRepository>();
+builder.Services.AddScoped<IDonXetNghiem, DonXetNghiemRepository>();
+builder.Services.AddScoped<IKetQuaXetNghiem, KetQuaXetNghiemRepository>();
 builder.Services.AddScoped(http => new HttpClient
 {
     BaseAddress = new Uri(builder.Configuration.GetSection("BaseAdress").Value)
