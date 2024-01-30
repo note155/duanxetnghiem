@@ -1,0 +1,40 @@
+﻿@page "/"
+@inject NavigationManager navigation;
+@if (err != "")
+{
+    <p>@err</p>
+}
+<div class="card text-center">
+
+    <div class="card-body">
+        <h5 class="card-title">Xét Nghiệm Máu Tại Nhà</h5>
+        <p class="card-text">Dịch vụ xét nghiệm máu chất lượng cao, tiện lợi và an toàn ngay tại nhà bạn</p>
+        <EditForm Model="Input" method="post" OnValidSubmit="add" FormName="register">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText style="width: 360px; height: 36px;" @bind-Value="Input" placeholder="Nhập kết quả xét nghiệm                  " />
+                <ValidationMessage For="() => Input" class="text-danger" />
+            </div>
+            <a href="#" class="btn btn-outline-dark">Đặt lịch hẹn</a>
+            <button type="submit" class="btn btn-dark">Xem kết quả</button>
+        </EditForm>
+    </div>
+</div>
+@code {
+    [SupplyParameterFromForm]
+    public String Input { get; set; } = new("");
+    String err = "";
+    private async Task add()
+    {
+         if (string.IsNullOrEmpty(Input))
+        {
+            err = "Address is required.";
+        }
+        else
+        {
+            err = "aa";                                                                
+        }
+    }
+        
+}
