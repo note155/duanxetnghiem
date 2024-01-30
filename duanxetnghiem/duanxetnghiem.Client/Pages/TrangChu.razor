@@ -1,4 +1,5 @@
 ﻿@page "/"
+
 @inject NavigationManager navigation;
 @if (err != "")
 {
@@ -6,8 +7,8 @@
 }
 <div class="card text-center">
 
-    <div class="card-body">
-        <h5 class="card-title">Xét Nghiệm Máu Tại Nhà</h5>
+    <div style="height: 372px;" class="card-body">
+        <h4 class="card-title">Xét Nghiệm Máu Tại Nhà</h4>
         <p class="card-text">Dịch vụ xét nghiệm máu chất lượng cao, tiện lợi và an toàn ngay tại nhà bạn</p>
         <EditForm Model="Input" method="post" OnValidSubmit="add" FormName="register">
             <DataAnnotationsValidator />
@@ -19,6 +20,38 @@
             <a href="#" class="btn btn-outline-dark">Đặt lịch hẹn</a>
             <button type="submit" class="btn btn-dark">Xem kết quả</button>
         </EditForm>
+    </div>
+</div>
+<div style="height=600" class="row d-flex align-items-center justify-content-center">
+    <div class="col-6 d-flex flex-column align-items-center">
+        <h4 style="font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 40px;line-height: 48px;">
+            Dịch vụ của chúng tôi
+        </h4>
+        <p style="font-family: 'Roboto';font-style: normal;font-weight: 400;font-size: 16px;line-height: 24px;">
+            Chúng tôi cung cấp các gói xét nghiệm máu chuyên sâu,             
+         </p>
+        <p style="font-family: 'Roboto';font-style: normal;font-weight: 400;font-size: 16px;line-height: 24px;">
+            đảm bảo phục vụ mọi nhu cầu của bạn.
+        </p>   
+        <a href="#" class="btn btn-dark">Đặt lịch hẹn</a>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <img src="1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">xét nghiệm máu tổng quát</h5>
+                    <p class="card-text">240 chỉ số xét nghiệm </p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="2.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Đường huyết (đói)</h5>
+                    <p class="card-text">100 chỉ số xét nghiệm</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @code {

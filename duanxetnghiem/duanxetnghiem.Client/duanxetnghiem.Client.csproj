@@ -17,4 +17,13 @@
     <ProjectReference Include="..\..\Shared\Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\1.jpg" />
+    <None Include="wwwroot\2.jpg" />
+  </ItemGroup>
+
 </Project>
