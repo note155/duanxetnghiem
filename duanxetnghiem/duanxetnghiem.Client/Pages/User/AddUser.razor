@@ -1,0 +1,72 @@
+﻿@page "/Add-User"
+@using duanxetnghiem.Data.Model;
+@inject NavigationManager navigation;
+<h3>Component</h3>
+
+@if (err != "")
+{
+    <p>Lỗi</p>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="Input" method="post" OnValidSubmit="add" FormName="register">
+            <DataAnnotationsValidator />
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.Hoten" class="form-control"  />
+                <label for="Hoten">Họ Tên</label>
+                <ValidationMessage For="() => Input.Hoten" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText  @bind-Value="Input.Diachi" class="form-control"  />
+                <label for="Diachi">Địa Chỉ</label>
+                <ValidationMessage For="() => Input.Diachi" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText  @bind-Value="Input.SDT" class="form-control"  />
+                <label for="confirm-password">Số Điện Thoại</label>
+                <ValidationMessage For="() => Input.SDT" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText  @bind-Value="Input.Email" class="form-control"  />
+                <label for="confirm-password">Email</label>
+                <ValidationMessage For="() => Input.Email" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputSelect id="Gioitinh" @bind-Value="Input.Gioitinh" class="form-control">
+                    <option value="true">Nam</option>
+                    <option value="false">Nữ</option>
+                </InputSelect>
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber  @bind-Value="Input.Tuoi" class="form-control" />
+                <ValidationMessage For="() => Input.Tuoi" class="text-danger" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </EditForm>
+    </div>
+    
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    public User Input { get; set; } = new();
+    String err = "";
+    private async Task add()
+    {
+        if (string.IsNullOrEmpty(Input.Diachi))
+        {
+            err = "Address is required.";
+        }
+        else
+        {
+            var result = await Usertservice.adduserAsync(Input);
+            navigation.NavigateTo("/");
+        }
+
+    }
+}
+
