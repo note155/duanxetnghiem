@@ -1,0 +1,186 @@
+﻿@page "/datlich"
+@using Shared.form
+<h3>Đặt lịch lấy máu</h3>
+@foreach (var err in errors)
+{
+    <p class="text-danger">@err</p>
+}
+    <EditForm Model="Input" method="post" OnValidSubmit="add" FormName="register">
+        <DataAnnotationsValidator />
+        <ValidationSummary class="text-danger" role="alert" />
+    <div class="container px-4 justify-content-center">
+            <div class="row gx-3">
+                <div class="col">
+                <label class="control-label">Họ Tên:</label><br>
+                    <InputText style="width: 300px; height: 36px;" @bind-Value="Input.Hoten" placeholder="Lê Văn A" />
+                    <ValidationMessage For="() => Input.Hoten" class="text-danger" />
+                </div>
+                <div class="col">
+                <label>Địa chỉ:</label><br>
+                    <InputText style="width: 300px; height: 36px;" @bind-Value="Input.Diachi" placeholder="23 Lý Nhân Tông, Hương Chữ, Hương Trà, TT Huế" />
+                    <ValidationMessage For="() => Input.Diachi" class="text-danger" />
+                </div>
+            </div>
+            <br>
+            <div class="row gx-3">
+                <div class="col">
+                    <label>Email:</label><br>
+                <InputText style="width: 300px; height: 36px;" @bind-Value="Input.Email" placeholder="LeVanA@gmail.com" />
+                    <ValidationMessage For="() => Input.Email" class="text-danger" />
+                </div>
+                <div class="col">
+                    <label>Số điện thoại:</label><br>
+                <InputText style="width: 300px; height: 36px;" @bind-Value="Input.SDT" placeholder="0988999999" />
+                    <ValidationMessage For="() => Input.SDT" class="text-danger" />
+                </div>
+            </div>
+            <br>
+            <div class="row gx-5">
+                <div class="col">
+                    <label>Giới tính:</label><br>
+                <InputSelect style="width: 300px; height: 36px;" id="Gioitinh" @bind-Value="Input.Gioitinh" class="form-control">
+                        <option value="true">Nam</option>
+                        <option value="false">Nữ</option>
+                    </InputSelect>
+                    <ValidationMessage For="() => Input.Gioitinh" class="text-danger" />
+                </div>
+                <div class="col">
+                    <label>Tuổi:</label><br>
+                <InputNumber style="width: 300px; height: 36px;" @bind-Value="Input.Tuoi" placeholder="0988999999" />
+                    <ValidationMessage For="() => Input.Tuoi" class="text-danger" />
+                </div>
+            </div>
+        <br>
+        <div class="row gx-5">
+            <div class="col">
+                <label>Gói xét nghiệm:</label><br>
+                <InputSelect style="width: 300px; height: 36px;" id="idgoixetnghiem" @bind-Value="Input.idgoixetnghiem" class="form-control">
+                    <option value="">Chọn gói xét nghiệm</option>
+                    @foreach (var gxn in Goixetnghiem)
+                    {
+                        <option value="@gxn.Id">@gxn.TenGoi</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => Input.idgoixetnghiem" class="text-danger" />
+            </div>
+            <div class="col">
+                <label>Ngày lấy mẫu:</label><br>
+                <InputDate style="width: 300px; height: 36px;" @bind-Value="Input.Ngaydat" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <ValidationMessage For="() => Input.Ngaydat" class="text-danger" />
+            </div>
+        </div>
+        <br>
+        <div class="row gx-5">
+            <div class="col">
+                <label>Giờ lấy mẫu:</label><br>
+                <InputSelect style="width: 300px; height: 36px;" id="giolaymau" @bind-Value="Input.giolaymau" class="form-control">
+                    <option value="5h30">5h30</option>
+                    <option value="6h">6h</option>
+                    <option  value="6h30">6h30</option>
+                    <option value="7h">7h</option>
+                    <option value="7h30">7h30</option>
+                    <option value="8h">8h</option>
+                    <option value="8h30">8h30</option>
+                    <option value="9h">9h</option>
+                    <option value="9h30">9h30</option>
+                    <option value="10h">10h</option>
+                    <option value="10h30">10h30</option>
+                    <option value="11h">11h</option>
+                    <option value="11h30">11h30</option>
+                    <option value="12h">12h</option>
+                    <option value="12h30">12h30</option>
+                    <option value="13h">13h</option>
+                    <option value="13h30">13h30</option>
+                    <option value="14h">14h</option>
+                    <option value="14h30">14h30</option>
+                    <option value="15h">15h</option>
+                    <option value="15h30">15h30</option>
+                    <option value="16h">16h</option>
+                    <option value="16h30">16h30</option>
+                    <option value="17h">17h</option>
+                    <option value="17h30">17h30</option>
+                    <option value="18h">18h</option>
+                    <option value="18h30">18h30</option>
+                    <option value="19h">19h</option>
+                    <option value="19h30">19h30</option>
+                    <option value="20h">20h</option>
+                    <option value="20h30">20h30</option>
+                    <option value="21h">21h</option>
+                </InputSelect>
+            </div>
+            <div class="col">
+                <label>Ghi chú:</label><br>
+                <InputTextArea style="width: 300px; height: 36px;" @bind-Value="Input.ghiChu" placeholder="Tôi cảm thấy..." />
+                <ValidationMessage For="() => Input.ghiChu" class="text-danger" />
+            </div>
+        </div>
+        <br>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-outline-success">Đặt lịch</button>
+        </div>
+        </div>
+           
+    
+    </EditForm>
+@code {
+    [SupplyParameterFromForm]
+    public donXNform Input { get; set; } = new();
+    List<GoiXetNghiem> Goixetnghiem = new List<GoiXetNghiem>();
+    List<string> errors = new List<string>();
+    protected override async Task OnInitializedAsync()
+    {
+        Goixetnghiem = await GXNservice.getallAsync();
+    }
+    private async Task add()
+    {
+        if (!IsValidEmail(Input.Email))
+        {
+            errors.Add("Email không hợp lệ.");
+        }
+        if (!IsValidPhoneNumber(Input.SDT))
+        {
+            errors.Add("Số điện thoại không hợp lệ.");
+        }
+        if (string.IsNullOrEmpty(Input.Hoten) ||
+            string.IsNullOrEmpty(Input.Diachi) ||
+            string.IsNullOrEmpty(Input.Email) ||
+            string.IsNullOrEmpty(Input.SDT) ||
+            string.IsNullOrEmpty(Input.Gioitinh.ToString()) ||
+            string.IsNullOrEmpty(Input.Tuoi.ToString()) ||
+            string.IsNullOrEmpty(Input.idgoixetnghiem.ToString()) ||
+            string.IsNullOrEmpty(Input.Ngaydat.ToString()) ||
+            string.IsNullOrEmpty(Input.giolaymau) ||
+            string.IsNullOrEmpty(Input.ghiChu))
+        {
+            errors.Add("Vui lòng điền đầy đủ thông tin.");
+        }
+        if (errors.Count == 0)
+        {
+            User newUser = new User
+                {
+                    Hoten = Input.Hoten,      
+                    Diachi = Input.Diachi,  
+                    Email = Input.Email,  
+                    SDT = Input.SDT,     
+                    Gioitinh = Input.Gioitinh,        
+                    Tuoi = Input.Tuoi               
+                };
+        }
+    }
+    private bool IsValidEmail(string email)
+    {
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+    private bool IsValidPhoneNumber(string phoneNumber)
+    {
+        return !phoneNumber.Any(char.IsLetter);
+    }
+}

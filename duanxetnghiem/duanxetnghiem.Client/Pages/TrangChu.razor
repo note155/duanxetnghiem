@@ -13,49 +13,144 @@
         <EditForm Model="Input" method="post" OnValidSubmit="add" FormName="register">
             <DataAnnotationsValidator />
             <ValidationSummary class="text-danger" role="alert" />
-            <div class="form-floating mb-3">
-                <InputText style="width: 360px; height: 36px;" @bind-Value="Input" placeholder="Nhập kết quả xét nghiệm                  " />
-                <ValidationMessage For="() => Input" class="text-danger" />
-            </div>
+            <InputText style="width: 70%; height: 36px;" @bind-Value="Input" placeholder="Nhập kết quả xét nghiệm                  " />
+            <ValidationMessage For="() => Input" class="text-danger" />
             <a href="#" class="btn btn-outline-dark">Đặt lịch hẹn</a>
             <button type="submit" class="btn btn-dark">Xem kết quả</button>
         </EditForm>
     </div>
 </div>
 <div style="height:50px;" class="row"></div>
-<div style="height:600" class="row d-flex align-items-center justify-content-center">
-    <div class="col-6 d-flex flex-column align-items-center">
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6 d-flex flex-column align-items-center">
         <h4 style="font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 40px;line-height: 48px;">
             Dịch vụ của chúng tôi
         </h4>
         <p style="font-family: 'Roboto';font-style: normal;font-weight: 400;font-size: 16px;line-height: 24px;">
-            Chúng tôi cung cấp các gói xét nghiệm máu chuyên sâu,             
-         </p>
+            Chúng tôi cung cấp các gói xét nghiệm máu chuyên sâu,
+        </p>
         <p style="font-family: 'Roboto';font-style: normal;font-weight: 400;font-size: 16px;line-height: 24px;">
             đảm bảo phục vụ mọi nhu cầu của bạn.
-        </p>   
+        </p>
         <a href="#" class="btn btn-dark">Đặt lịch hẹn</a>
+        <div style="height:30px" class="row"></div>
     </div>
-    <div class="col-6 d-flex flex-column align-items-center">
+    <div class="col-md-6 d-flex flex-column align-items-center">
         <div class="row">
-            <div class="card" style="width: 18rem;">
-                <img src="1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">xét nghiệm máu tổng quát</h5>
-                    <p class="card-text">240 chỉ số xét nghiệm </p>
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="1.jpg" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">xét nghiệm máu tổng quát</h5>
+                        <p class="card-text">240 chỉ số xét nghiệm </p>
+                    </div>
                 </div>
             </div>
-            <div style="width:10px;" class="col"></div>
-            <div class="card" style="width: 18rem;">
-                <img src="2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Đường huyết (đói)</h5>
-                    <p class="card-text">100 chỉ số xét nghiệm</p>
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="2.jpg" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Đường huyết (đói)</h5>
+                        <p class="card-text">100 chỉ số xét nghiệm</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Nhận xét của khách hàng -->
+<div style="height:50px;" class="row"></div>
+<div style="height:400px;" class="row d-flex align-items-center justify-content-center">
+    <!-- Title -->
+    <div class="col-6 d-flex flex-column align-items-center">
+        <div class="title" style=" font-family: 'Roboto'; font-style: normal; font-weight: 700; font-size: 40px; line-height: 48px; color: #000000;">
+            Nhận xét của khách hàng
+        </div>
+    </div>
+
+    <div class="col-6 d-flex flex-wrap justify-content-center">
+        <div class="row">
+        <!-- Customer Review Card 1 -->
+            <div class="card d-flex flex-column justify-content-center align-items-center p-3 gap-3" style="width: 300px; height: 200px; background: rgba(0, 0, 0, 0.05); border-radius: 6px;">
+                <!-- User -->
+                <div class="user d-flex flex-row align-items-center gap-2" style="width: 208px; height: 32px;">
+                    <!-- Avatar -->
+                    <div class="avatar d-flex flex-row align-items-center gap-2" style="width: 32px; height: 32px; background: rgba(0, 0, 0, 0.1); border-radius: 32px;"></div>
+                    <!-- Frame -->
+                    <div class="frame d-flex flex-column align-items-start" style="width: 105.74px; height: 20px;">
+                        <!-- Title in Frame -->
+                        <div class="title" style="width: 105.74px; height: 20px; font-family: 'Roboto'; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; color: #000000;">
+                            Văn Tương Linh
+                        </div>
+                            <img src="7.jpg" style="width: 60px; height: 30px">
+                    </div>
+                </div>
+                <!-- Review Content -->
+                <p>Dịch vụ nhanh chóng, tiện lợi và dễ dàng sử dụng.</p>
+            </div>
+   
+        <div style="width:10px;" class="col"></div>
+        <!-- Customer Review Card 2 -->
+            <div class="card d-flex flex-column justify-content-center align-items-center p-3 gap-3" style="width: 300px; height: 200px ; background: rgba(0, 0, 0, 0.05); border-radius: 6px;">
+                <!-- User -->
+                <div class="user d-flex flex-row align-items-center gap-2" style="width: 208px; height: 32px;">
+                    <!-- Avatar -->
+                    <div class="avatar d-flex flex-row align-items-center gap-2" style="width: 32px; height: 32px; background: rgba(0, 0, 0, 0.1); border-radius: 32px;"></div>
+                    <!-- Frame -->
+                    <div class="frame d-flex flex-column align-items-start" style="width: 105.74px; height: 20px;">
+                        <!-- Title in Frame -->
+                        <div class="title" style="width: 105.74px; height: 20px; font-family: 'Roboto'; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; color: #000000;">
+                            Nguyễn Ngọc Hà
+                        </div>
+                        <img src="7.jpg" style="width: 60px; height: 30px">
+                    </div>
+                </div>
+                <!-- Review Content -->
+                <p>Tôi hài lòng với việc xét nghiệm máu tại nhà.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:50px" class="row"></div>
+<div class="row">
+    <div class="col-md-6 d-flex flex-column align-items-center">
+        <div class="d-flex justify-content-center align-items-center">
+            <h4 style="font-family: 'Roboto'; font-style: normal; font-weight: 700; font-size: 40px; line-height: 48px;" class="text-center">
+                Lợi ích của xét nghiệm máu tại nhà
+            </h4>
+        </div>
+        <div class="d-grid gap-3 mt-5">
+            <div class="p-3 d-flex align-items-center">
+                <img style="width:40px" src="3.png" alt="Icon">
+                <p style="font-family: 'Roboto'; font-style: normal; font-weight: 400; font-size: 20px; line-height: 28px; margin-left: 10px;">
+                    Tiết kiệm thời gian
+                    - Không cần di chuyển
+                </p>         
+            </div>
+            <div class="p-3 d-flex align-items-center">
+                <img style="width:40px" src="5.png" alt="Icon">
+                <p style="font-family: 'Roboto'; font-style: normal; font-weight: 400; font-size: 20px; line-height: 28px; margin-left: 10px;">
+                    Kết quả nhanh
+                    - Nhận kết quả trong vài giờ
+                </p>
+            </div>
+            <div class="p-3 d-flex align-items-center">
+                <img style="width:40px" src="6.jpg" alt="Icon">
+                <p style="font-family: 'Roboto'; font-style: normal; font-weight: 400; font-size: 20px; line-height: 28px; margin-left: 10px;">
+                    An toàn và uy tín
+                    - Đảm bảo sự riêng tư và bảo mật
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-6">
+        <img style="width: 100%" src="4.jpg" alt="Hình ảnh mô tả lợi ích">
+    </div>
+</div>
+
 @code {
     [SupplyParameterFromForm]
     public String Input { get; set; } = new("");

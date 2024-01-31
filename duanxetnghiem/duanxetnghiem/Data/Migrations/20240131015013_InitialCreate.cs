@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace duanxetnghiem.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,7 @@ namespace duanxetnghiem.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Hoten = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Chucvu = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Anh = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Anh = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SDT = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -35,7 +35,7 @@ namespace duanxetnghiem.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TenGoi = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gia = table.Column<long>(type: "bigint", nullable: false),
-                    ThoiGian = table.Column<int>(type: "int", nullable: false),
+                    ThoiGian = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Mota = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Anh = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -55,7 +55,7 @@ namespace duanxetnghiem.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SDT = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gioitinh = table.Column<bool>(type: "bit", nullable: false),
-                    Tuoi = table.Column<int>(type: "int", nullable: true)
+                    Tuoi = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,11 +69,13 @@ namespace duanxetnghiem.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    BacSiId = table.Column<int>(type: "int", nullable: false),
+                    BacSiId = table.Column<int>(type: "int", nullable: true),
                     GoiXetNghiemId = table.Column<int>(type: "int", nullable: false),
                     Ngaydat = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ghiChu = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Trangthai = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ghiChu = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Trangthai = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    giolaymau = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ngaytaodon = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,8 +84,7 @@ namespace duanxetnghiem.Migrations
                         name: "FK_DonXetNghiems_BacSis_BacSiId",
                         column: x => x.BacSiId,
                         principalTable: "BacSis",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_DonXetNghiems_GoiXetNghiems_GoiXetNghiemId",
                         column: x => x.GoiXetNghiemId,
@@ -107,7 +108,8 @@ namespace duanxetnghiem.Migrations
                     DonXetNghiemId = table.Column<int>(type: "int", nullable: false),
                     Anhketqua = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     KetQua = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ghiChu = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ghiChu = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ngaycoKQ = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

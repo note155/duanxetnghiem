@@ -11,5 +11,6 @@ namespace duanxetnghiem.Data.Model
         public string Anhketqua { get; set; }
         public string KetQua { get; set; }
         public string ghiChu { get; set; }
+        public DateTime ngaycoKQ { get; set; }
     }
 }

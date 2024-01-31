@@ -12,8 +12,8 @@ using duanxetnghiem.Data;
 namespace duanxetnghiem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240129034459_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240131015013_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -232,7 +232,6 @@ namespace duanxetnghiem.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Anh")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Chucvu")
@@ -260,7 +259,7 @@ namespace duanxetnghiem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BacSiId")
+                    b.Property<int?>("BacSiId")
                         .HasColumnType("int");
 
                     b.Property<int>("GoiXetNghiemId")
@@ -277,8 +276,14 @@ namespace duanxetnghiem.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ghiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("giolaymau")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ngaytaodon")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -314,8 +319,9 @@ namespace duanxetnghiem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ThoiGian")
-                        .HasColumnType("int");
+                    b.Property<string>("ThoiGian")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -344,6 +350,9 @@ namespace duanxetnghiem.Migrations
                     b.Property<string>("ghiChu")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ngaycoKQ")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -442,9 +451,7 @@ namespace duanxetnghiem.Migrations
                 {
                     b.HasOne("duanxetnghiem.Data.Model.BacSi", "BacSi")
                         .WithMany()
-                        .HasForeignKey("BacSiId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BacSiId");
 
                     b.HasOne("duanxetnghiem.Data.Model.GoiXetNghiem", "GoiXetNghiem")
                         .WithMany()
