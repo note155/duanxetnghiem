@@ -30,13 +30,28 @@ namespace duanxetnghiem.Controller
             return Ok(student);
         }
 
-        [HttpPost("Add-User")]
-        public async Task<ActionResult<User>> AddNewStudentAsync(User user)
+        [HttpGet("EmailExists/{email}")]
+        public async Task<IActionResult> IsEmailExistsAsync(string email)
         {
-            var newstudent = await _UserRepository.adduserAsync(user);
+            var isEmailExists = await _UserRepository.IsEmailExistsAsync(email);
 
-            return Ok(newstudent);
+            return Ok(isEmailExists);
         }
+        [HttpPost("Add-User")]
+        public async Task<ActionResult<int>> AddNewStudentAsync(User user)
+        {
+            var newUserId = await _UserRepository.adduserAsync(user);
+
+            if (newUserId != -1)
+            {
+                return Ok(newUserId);
+            }
+            else
+            {
+                return BadRequest("Failed to add user.");
+            }
+        }
+
 
 
         [HttpDelete("DeleteUser/{id}")]

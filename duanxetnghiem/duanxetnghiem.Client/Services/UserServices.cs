@@ -11,11 +11,10 @@ namespace duanxetnghiem.Client.Services
         {
             this._httpClient = httpClient;
         }
-        public async Task<User> adduserAsync(User user)
+        public async Task<int> adduserAsync(User user)
         {
-            Console.WriteLine(user);
             var newstudent = await _httpClient.PostAsJsonAsync("api/Studen/Add-User", user);
-            var respone = await newstudent.Content.ReadFromJsonAsync<User>();
+            var respone = await newstudent.Content.ReadFromJsonAsync<int>();
             return respone;
         }
 
@@ -37,6 +36,13 @@ namespace duanxetnghiem.Client.Services
         {
             var onestudent = await _httpClient.GetAsync("api/Studen/Single-User");
             var respone = await onestudent.Content.ReadFromJsonAsync<User>();
+            return respone;
+        }
+
+        public async Task<bool> IsEmailExistsAsync(string email)
+        {
+            var allstudent = await _httpClient.PostAsJsonAsync("api/Studen/EmailExists", email);
+            var respone = await allstudent.Content.ReadFromJsonAsync<bool>();
             return respone;
         }
 

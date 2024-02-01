@@ -1,6 +1,8 @@
 ﻿@page "/datlich"
 @using Shared.form
 <h3>Đặt lịch lấy máu</h3>
+<h3>@id</h3>
+<h3>@DateTime.Now</h3>
 @foreach (var err in errors)
 {
     <p class="text-danger">@err</p>
@@ -125,6 +127,7 @@
 @code {
     [SupplyParameterFromForm]
     public donXNform Input { get; set; } = new();
+    int id = 0;
     List<GoiXetNghiem> Goixetnghiem = new List<GoiXetNghiem>();
     List<string> errors = new List<string>();
     protected override async Task OnInitializedAsync()
@@ -165,6 +168,19 @@
                     Gioitinh = Input.Gioitinh,        
                     Tuoi = Input.Tuoi               
                 };
+             id = await Usertservice.adduserAsync(newUser);
+            DonXetNghiem donXetNghiem = new DonXetNghiem
+                {
+                    UserId = id,
+                    BacSiId = null,
+                    GoiXetNghiemId = Input.idgoixetnghiem,
+                    Ngaydat = Input.Ngaydat,
+                    ghiChu = Input.ghiChu,
+                    Trangthai = "Đang xử lý",
+                    giolaymau = Input.giolaymau,
+                    ngaytaodon = DateTime.Now,
+                };
+            DXNservice.addAsync(donXetNghiem);
         }
     }
     private bool IsValidEmail(string email)

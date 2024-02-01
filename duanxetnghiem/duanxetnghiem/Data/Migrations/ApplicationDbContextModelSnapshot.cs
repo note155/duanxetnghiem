@@ -284,8 +284,6 @@ namespace duanxetnghiem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BacSiId");
-
                     b.HasIndex("GoiXetNghiemId");
 
                     b.HasIndex("UserId");
@@ -446,10 +444,6 @@ namespace duanxetnghiem.Migrations
 
             modelBuilder.Entity("duanxetnghiem.Data.Model.DonXetNghiem", b =>
                 {
-                    b.HasOne("duanxetnghiem.Data.Model.BacSi", "BacSi")
-                        .WithMany()
-                        .HasForeignKey("BacSiId");
-
                     b.HasOne("duanxetnghiem.Data.Model.GoiXetNghiem", "GoiXetNghiem")
                         .WithMany()
                         .HasForeignKey("GoiXetNghiemId")
@@ -461,8 +455,6 @@ namespace duanxetnghiem.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("BacSi");
 
                     b.Navigation("GoiXetNghiem");
 

@@ -18,14 +18,14 @@ namespace duanxetnghiem.Services
             _context = context;
         }
 
-        public async Task<User> adduserAsync(User user)
+        public async Task<int> adduserAsync(User user)
         {
-            if (user == null) return null;
-            Console.WriteLine(user.Diachi);
-            var newstudent = _context.Users.Add(user).Entity;
+            if (user == null) return -1; // hoặc giá trị đặc biệt để biểu thị lỗi
+
+            var newuser = _context.Users.Add(user).Entity;
             await _context.SaveChangesAsync();
 
-            return newstudent;
+            return newuser.Id;
         }
 
         public async Task<User> deleteuserAsync(int id)
@@ -59,6 +59,15 @@ namespace duanxetnghiem.Services
             await _context.SaveChangesAsync();
 
             return updateuser;
+        }
+        public async Task<bool> IsEmailExistsAsync(string email)
+        {
+            return await _context.Users.AnyAsync(x => x.Email == email);
+        }
+
+        public Task<int> getidbyemail(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }

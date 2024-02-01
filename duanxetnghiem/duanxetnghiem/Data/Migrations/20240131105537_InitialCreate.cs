@@ -81,11 +81,6 @@ namespace duanxetnghiem.Migrations
                 {
                     table.PrimaryKey("PK_DonXetNghiems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DonXetNghiems_BacSis_BacSiId",
-                        column: x => x.BacSiId,
-                        principalTable: "BacSis",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_DonXetNghiems_GoiXetNghiems_GoiXetNghiemId",
                         column: x => x.GoiXetNghiemId,
                         principalTable: "GoiXetNghiems",
@@ -123,11 +118,6 @@ namespace duanxetnghiem.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DonXetNghiems_BacSiId",
-                table: "DonXetNghiems",
-                column: "BacSiId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_DonXetNghiems_GoiXetNghiemId",
                 table: "DonXetNghiems",
                 column: "GoiXetNghiemId");
@@ -147,13 +137,13 @@ namespace duanxetnghiem.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "BacSis");
+
+            migrationBuilder.DropTable(
                 name: "KetQuaXetNghiems");
 
             migrationBuilder.DropTable(
                 name: "DonXetNghiems");
-
-            migrationBuilder.DropTable(
-                name: "BacSis");
 
             migrationBuilder.DropTable(
                 name: "GoiXetNghiems");
