@@ -1,5 +1,6 @@
 ﻿@page "/"
 
+@using duanxetnghiem.Data.Model;
 @inject NavigationManager navigation;
 @if (err != "")
 {
@@ -15,8 +16,13 @@
             <ValidationSummary class="text-danger" role="alert" />
             <InputText style="width: 70%; height: 36px;" @bind-Value="Input" placeholder="Nhập kết quả xét nghiệm                  " />
             <ValidationMessage For="() => Input" class="text-danger" />
-            <a href="#" class="btn btn-outline-dark">Đặt lịch hẹn</a>
-            <button type="submit" class="btn btn-dark">Xem kết quả</button>
+                <br>
+            <br>
+
+            <div  class="row justify-content-center">
+                <a style="width:250px;" href="/datlich" class="btn btn-outline-dark  ">Đặt lịch hẹn</a>
+                <button style="width:250px;" type="submit" class="btn btn-dark ">Xem kết quả</button>
+                </div>
         </EditForm>
     </div>
 </div>
@@ -32,7 +38,7 @@
         <p style="font-family: 'Roboto';font-style: normal;font-weight: 400;font-size: 16px;line-height: 24px;">
             đảm bảo phục vụ mọi nhu cầu của bạn.
         </p>
-        <a href="#" class="btn btn-dark">Đặt lịch hẹn</a>
+        <a href="datlich" class="btn btn-dark">Đặt lịch hẹn</a>
         <div style="height:30px" class="row"></div>
     </div>
     <div class="col-md-6 d-flex flex-column align-items-center">
@@ -58,23 +64,132 @@
         </div>
     </div>
 </div>
+<!-- Tại sao chọn chúng tôi -->
+<div style="height: 50px;" class="row"></div>
+<div class="row">
+    <div class="col-md-6 d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center" style="max-width: 600px; margin: 0 auto;">
+            <h4 style="font-family: 'Roboto'; font-style: normal; font-weight: 700; font-size: 40px; line-height: 48px;" class="text-center">
+                Tại sao chọn chúng tôi?
+            </h4>
+            <p style="font-family: 'Roboto'; font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px;">
+                Với kinh nghiệm lâu năm và đội ngũ uy tín, chúng tôi cam kết
+            </p>
+            <p style="font-family: 'Roboto'; font-style: normal; font-weight: 400; font-size: 16px; line-height: 24px;">
+                mang đến cho bạn những kết quả chính xác và uy tín.
+            </p>           
+        </div>
+    </div>
+    
+</div>
+<style>
+    .post-item-details {
+        font-size: 14px;
+        margin-bottom: 3px;
+        margin-top: 3px; /* Giảm kích thước font chữ */
+    }
+
+    .post-item-title{
+        margin-top : 3px;
+        margin-bottom: 3px;
+        font-size: 20px;
+    }
+
+    .post-item-photo img {
+        height: 200px; /* Thiết lập chiều cao cố định cho ảnh */
+        width: 100%; /* Đảm bảo ảnh chiếm đầy đủ chiều rộng của container */
+        object-fit: cover; /* Đảm bảo ảnh không bị biến đổi khi thiết lập chiều cao cố định */
+    }
+   </style>
+<!-- Tại sao chọn chúng tôi -->
+<div class="container">
+    <div style="height: 50px; width: 100%;" class="row"></div>
+    <div class="row">
+        <div class="col-md-3 mx-1">
+            <div class="card mb-3" style="max-width: 500px; margin: 0 auto;">
+                <div class="post-item-info">
+                    <div class="post-item-photo">
+                        <a href="https://medlatec.vn/tin-tuc/dich-vu-xet-nghiem-mau-tai-nha-chat-luong-cao-medlatec-s192-n19281" class="post-image-container" tabindex="-1">
+                            <img src="https://medlatec.vn/ImagePath/images/20200815/20200815_dich-vu-xet-nghiem-mau-01.jpg" alt="" loading="lazy" style="width: 100%;">
+                        </a>
+                    </div>
+                    <div class="post-item-details">
+                        <h3 class="post-item-title">
+                            <a href="https://medlatec.vn/tin-tuc/dich-vu-xet-nghiem-mau-tai-nha-chat-luong-cao-medlatec-s192-n19281" tabindex="-1">DỊCH VỤ XÉT NGHIỆM MÁU TẠI NHÀ CHẤT LƯỢNG CAO...</a>
+                        </h3>
+                        <div class="post-item-excerpt ">
+                            Dịch vụ xét nghiệm máu tại nhà với nhiều lợi ích vượt trội đã thu hút được sự quan tâm của đông đảo người dân ngay từ khi mới ra đời. Khi nhắc đến dịch vụ này, chắc chắn không thể bỏ qua đơn vị tiên phong .....
+                        </div>
+                        <div class="post-item-actions">
+                            <a href="https://medlatec.vn/tin-tuc/dich-vu-xet-nghiem-mau-tai-nha-chat-luong-cao-medlatec-s192-n19281" tabindex="-1">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mx-1">
+            <div class="card mb-3" style="max-width: 500px; margin: 0 auto;">
+                <div class="post-item-info">
+                    <div class="post-item-photo">
+                        <a href="https://medlatec.vn/tin-tuc/dich-vu-lay-mau-xet-nghiem-tan-noi-medlatec-goi-la-co-" class="post-image-container" tabindex="-1">
+                            <img src="https://medlatec.vn/media/34156/file/_lay-mau-3.jpg" alt="" loading="lazy" style="width: 100%;">
+                        </a>
+                    </div>
+                    <div class="post-item-details">
+                        <h3 class="post-item-title">
+                            <a href="https://medlatec.vn/tin-tuc/dich-vu-lay-mau-xet-nghiem-tan-noi-medlatec-goi-la-co-" tabindex="-1">DỊCH VỤ LẤY MẪU XÉT NGHIỆM TẬN NƠI MEDLATEC - GỌI LÀ CÓ!...</a>
+                        </h3>
+                        <div class="post-item-excerpt">
+                            Hình ảnh nữ cán bộ y tế chèo thuyền đến tận nhà lấy mẫu xét nghiệm khi Huế ngập trong biển nước vẫn luôn khiến tôi xúc động và cảm kích”! Chia sẻ của chị L.V.H (Thừa Thiên Huế) tái hiện lại một trong hàng ngàn khoảnh khắc đáng nhớ, khắc họa sự tận tâm của cán bộ ...
+                        </div>
+                        <div class="post-item-actions">
+                            <a href="https://medlatec.vn/tin-tuc/dich-vu-lay-mau-xet-nghiem-tan-noi-medlatec-goi-la-co-" tabindex="-1">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mx-1">
+            <div class="card mb-3" style="max-width: 500px; margin: 0 auto;">
+                <div class="post-item-info">
+                    <div class="post-item-photo">
+                        <a href="https://medlatec.vn/tin-tuc/dich-vu-lay-mau-xet-nghiem-tan-noi-medlatec-goi-la-co-" class="post-image-container" tabindex="-1">
+                            <img src="https://medlatec.vn/media/34156/file/_lay-mau-3.jpg" alt="" loading="lazy" style="width: 100%;">
+                        </a>
+                    </div>
+                    <div class="post-item-details">
+                        <h3 class="post-item-title">
+                            <a href="https://medlatec.vn/tin-tuc/dich-vu-lay-mau-xet-nghiem-tan-noi-medlatec-goi-la-co-" tabindex="-1">DỊCH VỤ LẤY MẪU XÉT NGHIỆM TẬN NƠI MEDLATEC - GỌI LÀ CÓ!...</a>
+                        </h3>
+                        <div class="post-item-excerpt">
+                            Hình ảnh nữ cán bộ y tế chèo thuyền đến tận nhà lấy mẫu xét nghiệm khi Huế ngập trong biển nước vẫn luôn khiến tôi xúc động và cảm kích”! Chia sẻ của chị L.V.H (Thừa Thiên Huế) tái hiện lại một trong hàng ngàn khoảnh khắc đáng nhớ, khắc họa sự tận tâm của cán bộ...
+                        </div>
+                        <div class="post-item-actions">
+                            <a href="https://medlatec.vn/tin-tuc/dich-vu-lay-mau-xet-nghiem-tan-noi-medlatec-goi-la-co-" tabindex="-1">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Nhận xét của khách hàng -->
 <div style="height:50px;" class="row"></div>
-<div style="height:400px;" class="row d-flex align-items-center justify-content-center">
+<div class="row d-flex align-items-center justify-content-center">
     <!-- Title -->
-    <div class="col-6 d-flex flex-column align-items-center">
+    <div class="col-md-6 d-flex flex-column align-items-center">
         <div class="title" style=" font-family: 'Roboto'; font-style: normal; font-weight: 700; font-size: 40px; line-height: 48px; color: #000000;">
             Nhận xét của khách hàng
         </div>
     </div>
 
-    <div class="col-6 d-flex flex-wrap justify-content-center">
-        <div class="row">
+    <div class="col-md-6 d-flex flex-wrap justify-content-center">
         <!-- Customer Review Card 1 -->
-            <div class="card d-flex flex-column justify-content-center align-items-center p-3 gap-3" style="width: 300px; height: 200px; background: rgba(0, 0, 0, 0.05); border-radius: 6px;">
-                <!-- User -->
-                <div class="user d-flex flex-row align-items-center gap-2" style="width: 208px; height: 32px;">
-                    <!-- Avatar -->
+            <div class="col-md-6">
+             <div class="card d-flex flex-column justify-content-center align-items-center p-3 gap-3" style=" background: rgba(0, 0, 0, 0.05); border-radius: 6px;">
+                 <!-- User -->
+                 <div class="user d-flex flex-row align-items-center gap-2" style="">
+                     <!-- Avatar -->
                     <div class="avatar d-flex flex-row align-items-center gap-2" style="width: 32px; height: 32px; background: rgba(0, 0, 0, 0.1); border-radius: 32px;"></div>
                     <!-- Frame -->
                     <div class="frame d-flex flex-column align-items-start" style="width: 105.74px; height: 20px;">
@@ -83,17 +198,18 @@
                             Văn Tương Linh
                         </div>
                             <img src="7.jpg" style="width: 60px; height: 30px">
-                    </div>
+                     </div> 
                 </div>
                 <!-- Review Content -->
                 <p>Dịch vụ nhanh chóng, tiện lợi và dễ dàng sử dụng.</p>
+             </div>
             </div>
    
-        <div style="width:10px;" class="col"></div>
         <!-- Customer Review Card 2 -->
-            <div class="card d-flex flex-column justify-content-center align-items-center p-3 gap-3" style="width: 300px; height: 200px ; background: rgba(0, 0, 0, 0.05); border-radius: 6px;">
+           <div class="col-md-6">
+            <div class="card d-flex flex-column justify-content-center align-items-center p-3 gap-3" style=" background: rgba(0, 0, 0, 0.05); border-radius: 6px;">
                 <!-- User -->
-                <div class="user d-flex flex-row align-items-center gap-2" style="width: 208px; height: 32px;">
+                <div class="user d-flex flex-row align-items-center gap-2" style="">
                     <!-- Avatar -->
                     <div class="avatar d-flex flex-row align-items-center gap-2" style="width: 32px; height: 32px; background: rgba(0, 0, 0, 0.1); border-radius: 32px;"></div>
                     <!-- Frame -->
@@ -150,21 +266,236 @@
         <img style="width: 100%" src="4.jpg" alt="Hình ảnh mô tả lợi ích">
     </div>
 </div>
+<!--Liên hệ đặt lịch-->
+<!-- section -->
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="padding: 60px 5%; background: rgba(0, 0, 0, 0.6);">
+        <!-- avatar -->
+        <div class="col-md-3 col-sm-12 d-flex align-items-center justify-content-center">
+            <div style="width: 100px; height: 100px; background: rgba(217, 217, 217, 0.5); border-radius: 50px;"></div>
+        </div>
 
+        <!-- container -->
+        <div class="col-md-6 col-sm-12">
+            <!-- title -->
+            <div style="height: 32px; font-family: 'Roboto'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 32px; color: #FFFFFF;">
+                Âu Lạc
+            </div>
+
+            <!-- Selection -->
+            <div style="display: flex; flex-direction: row; align-items: center; gap: 10px; height: 20px;">
+                <!-- label-normal -->
+                <div style=" background: rgba(217, 217, 217, 0.5); border: 0.5px solid rgba(0, 0, 0, 0.1); border-radius: 2px;">
+                    <!-- label text -->
+                    <div style=" font-family: 'Roboto'; font-style: normal; font-weight: 420; font-size: 14px; color: #000000;">
+                        Dịch vụ xét nghiệm máu tại nhà
+                    </div>
+                </div>
+            </div>
+            <!-- description -->
+            <div style=" font-family: 'Roboto'; font-style: normal; font-weight: 400; font-size: 16px; color: #FFFFFF;">
+                Chúng tôi cam kết mang đến cho bạn dịch vụ xét nghiệm máu chất lượng và đáng tin cậy.
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="col-md-3 col-sm-12">
+            <a href="#" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; width: 160px; height: 48px; margin: 0 auto;">
+                <!-- primary -->
+                <div style="width: 14rem; height: 50rem; background: #000000; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <!-- title -->
+                    <div style="width: 63px; height: 24px; font-family: 'Roboto'; font-style: normal; font-weight: 500; font-size: 16px; line-height: 24px; color: #FFFFFF;">
+                        Đặt ngay
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <div class="card mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-8">
+
+                <img src="9.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-4">
+                <div class="card-body d-grid gap-4">
+                    <h3 class="card-title">Quy Trình Thực Hiện</h3>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Đặt lịch</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Đặt trực tiếp tại website hoặc liện hệ 0988999999</p>
+                        </div>
+                    </div>
+                    <div class="card  p-2">
+                        <div class="card-header">
+                            <h5 class="card-title">Lấy mẫu</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Nhân viên y tế sẽ đến lấy mẫu trực tiếp tại nhà của bạn</p>
+                        </div>
+                    </div>
+                    <div class="card p-2">
+                        <div class="card-header ">
+                            <h5 class="card-title">Trả kết quả</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Kết quả sẽ được gửi đến bạn một cách nhanh ngay khi có kết quả</p>
+                        </div>
+                    </div>
+                    <div class="card p-2">
+                        <div class="card-header ">
+                            <h5 class="card-title">Tư vấn</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Chúng tôi có đội ngũ chuyên nguyệp sẵn sàng tư vấn kết quả xét nghiệm cho bạn</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Liên hệ - địa chỉ goodMap-->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .lienhe-info {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+        
+    }
+
+    .info-left {
+        flex: 0.5;
+    }
+
+    .guithongtin {
+        max-width: 400px;
+        margin: auto;
+        border-radius: 10px;
+        background-color: #FFFFFF ;
+        border: 2px solid #1d93e3;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #1d93e3;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background-color: #155d8b;
+        }
+
+    .info-right {
+        flex: 1;
+        margin-left: 20px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 450px;
+        border: 0;
+        border-radius: 10px;
+    }
+
+    a {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        color: #1d93e3;
+        text-decoration: none;
+    }
+
+    /* Thêm CSS để căn chỉnh nút về phía bên phải của bảng */
+    .button-cell {
+        text-align: right;
+    }
+</style>
+<div class="lienhe-info">
+    <div class="info-left">
+        <div class="guithongtin">
+            <h2 style="font-size: 22px;">Liên hệ với chúng tôi</h2>
+
+            <form name="formlh" onsubmit="return nguoidung()">
+                <table>
+                    <tr>
+                        <td>Họ và tên</td>
+                        <td><input type="text" name="ht" placeholder="Họ tên" autocomplete="off" required></td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ Email</td>
+                        <td><input type="email" name="em" placeholder="Email" autocomplete="off" required></td>
+                    </tr>
+                    <tr>
+                        <td>Nội dung</td>
+                        <td><textarea name="nd" rows="5" maxlength="500" placeholder="Nội dung liên hệ" required></textarea></td>
+                    </tr>
+                    <!-- Sử dụng thêm class cho hàng chứa nút "Gửi yêu cầu" -->
+                    <tr class="button-cell">
+                        <td colspan="2"><button type="submit">Gửi yêu cầu</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="info-right">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d626.2666466867495!2d107.5921861616567!3d16.45897538255283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141a13f5a9746a7%3A0xc608a91b8c7b5498!2zNzcgTmd1eeG7hW4gSHXhu4csIFBow7ogTmh14bqtbiwgVGjDoG5oIHBo4buRIEh14bq_LCBUaOG7q2EgVGhpw6puIEh14bq_LCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1690080716139!5m2!1sen!2s"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a href="https://www.maps.ie/create-google-map/" target="_blank" rel="noopener noreferrer">Embed Google Map</a>
+    </div>
+</div>
 @code {
     [SupplyParameterFromForm]
     public String Input { get; set; } = new("");
     String err = "";
     private async Task add()
     {
-         if (string.IsNullOrEmpty(Input))
+        if (string.IsNullOrEmpty(Input))
         {
-            err = "Address is required.";
+            err ="";
         }
+        
         else
         {
             err = "aa";                                                                
         }
     }
+   
+
+
         
 }

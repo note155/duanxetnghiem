@@ -10,3 +10,7 @@
 @using duanxetnghiem
 @using duanxetnghiem.Client
 @using duanxetnghiem.Components
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject Blazored.SessionStorage.ISyncSessionStorageService sessionStorage

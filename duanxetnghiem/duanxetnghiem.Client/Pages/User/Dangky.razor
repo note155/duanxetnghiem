@@ -1,0 +1,92 @@
+﻿@page "/dangky"
+
+
+@using Shared.Model
+@using Shared.form
+@using duanxetnghiem.Data.Model;
+@inject NavigationManager navigation;
+<h3>Component</h3>
+
+@if (err != "")
+{
+    <p>Lỗi</p>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="Input" method="post" OnValidSubmit="add" FormName="register">
+            <DataAnnotationsValidator />
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.Email" class="form-control" />
+                <label for="Email">Email:</label>
+                <ValidationMessage For="() => Input.Email" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText type="password" @bind-Value="Input.Password" class="form-control" />
+                <label for="Password">Password:</label>
+                <ValidationMessage For="() => Input.Password" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText type="password" @bind-Value="Input.Password2" class="form-control" />
+                <label for="Password2">Nhập lại Password:</label>
+                <ValidationMessage For="() => Input.Password2" class="text-danger" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Login</button>
+        </EditForm>
+    </div>
+
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    public loginform Input { get; set; } = new();
+    String err = "";
+    private async Task add()
+    {
+        if (!IsValidEmail(Input.Email))
+        {
+            err = "Email sai định dạng";
+            return;
+        }
+        if (string.IsNullOrEmpty(Input.Email)||
+        string.IsNullOrEmpty(Input.Password)||
+        string.IsNullOrEmpty(Input.Password2))
+        {
+            err = "Vui lòng nhập đầy đủ thông tin";
+        }
+        else
+        {
+            if(Input.Password==Input.Password2)
+            {
+                acc newUser = new acc
+                    {
+                        Email = Input.Email,
+                        pass = Input.Password,
+                        loaiacc = "1",
+                    };
+                if (await Usertservice.dangky(newUser))
+                {
+                    navigation.NavigateTo("/Login");
+                }
+            }
+
+        }
+
+    }
+    private bool IsValidEmail(string email)
+    {
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+}
+

@@ -1,19 +1,21 @@
-﻿@page "/counter"
-@rendermode InteractiveAuto
+﻿@page "/haha"
+@inject Blazored.SessionStorage.ISyncSessionStorageService sessionStorage
 
-<PageTitle>Counter</PageTitle>
+<p>@name</p>
 
-<h1>Counter</h1>
-
-<p role="status">Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button @onclick="InitializeComponent">Initialize Component</button>
 
 @code {
-    private int currentCount = 0;
+    String name = "";
 
-    private void IncrementCount()
+    protected override void OnInitialized()
     {
-        currentCount++;
+        sessionStorage.SetItem("name", "John Smith");
+        name = sessionStorage.GetItem<string>("name");
+    }
+
+    private void InitializeComponent()
+    {
+        OnInitializedAsync(); // Gọi hàm khi nhấn nút
     }
 }

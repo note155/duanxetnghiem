@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using duanxetnghiem.Data;
+﻿using duanxetnghiem.Data;
 using duanxetnghiem.Data.Model;
 using Microsoft.EntityFrameworkCore;
+using Shared.form;
 using Shared.ketnoi;
+using Shared.Model;
 
 namespace duanxetnghiem.Services
 {
@@ -60,14 +58,51 @@ namespace duanxetnghiem.Services
 
             return updateuser;
         }
-        public async Task<bool> IsEmailExistsAsync(string email)
+        public async Task<int> IsUserExistsAsync(User user)
         {
-            return await _context.Users.AnyAsync(x => x.Email == email);
+            if (user == null) return -1;
+
+            var existingUser = await _context.Users.FirstOrDefaultAsync(x =>
+                x.Email == user.Email
+                && x.Hoten == user.Hoten
+                && x.SDT == user.SDT
+                && x.Diachi == user.Diachi
+                && x.Tuoi == user.Tuoi
+            );
+
+            return existingUser?.Id ?? -1;
         }
 
-        public Task<int> getidbyemail(string email)
+        public async Task<bool> login(loginform uss)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(uss.Email) || string.IsNullOrEmpty(uss.Password))
+            {
+                return false; // Invalid input
+            }
+            var user = await _context.accs.FirstOrDefaultAsync(x => x.Email == uss.Email);
+
+            if (user != null)
+            {
+                bool isPasswordCorrect = BCrypt.Net.BCrypt.Verify(uss.Password, user.pass);
+
+                if (isPasswordCorrect)
+                {
+                    return true; // Login successful
+                }
+            }
+
+            return false; // Login failed
+        }
+
+        public async Task<bool> dangky(acc acc)
+        {
+            if (acc == null) return false; 
+            string pass= BCrypt.Net.BCrypt.HashPassword(acc.pass);
+            acc.pass=pass;
+            var newuser = _context.accs.Add(acc).Entity;
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

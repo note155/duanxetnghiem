@@ -2,6 +2,7 @@
 using duanxetnghiem.Data.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Shared.Model;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace duanxetnghiem.Data
@@ -16,6 +17,7 @@ namespace duanxetnghiem.Data
         public DbSet<GoiXetNghiem> GoiXetNghiems { get; set; }
         public DbSet<DonXetNghiem> DonXetNghiems { get; set; }
         public DbSet<KetQuaXetNghiem> KetQuaXetNghiems { get; set; }
+        public DbSet<acc> accs { get; set; }
         public object User { get; internal set; }
     }
 }

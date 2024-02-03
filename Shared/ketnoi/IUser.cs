@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using duanxetnghiem.Data.Model;
+﻿using duanxetnghiem.Data.Model;
+using Shared.form;
+using Shared.Model;
 
 namespace Shared.ketnoi
 {
@@ -14,7 +11,8 @@ namespace Shared.ketnoi
         Task<User> deleteuserAsync(int id);
         Task<List<User>> getalluserAsync();
         Task<User> getuserbyid(int Id);
-        Task<bool> IsEmailExistsAsync(string email);
-        Task<int> getidbyemail(string email);
+        Task<int> IsUserExistsAsync(User user);
+        Task<bool> login(loginform user);
+        Task<bool> dangky(acc acc);
     }
 }

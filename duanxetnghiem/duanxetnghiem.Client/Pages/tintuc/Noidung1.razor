@@ -1,0 +1,28 @@
+﻿@page "/huhu"
+@inject Blazored.SessionStorage.ISyncSessionStorageService sessionStorage
+@inject IJSRuntime jsRuntime;
+<h3>@name</h3>
+
+@code {
+    public string name = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Console.WriteLine("Attempting to set session storage...");
+            await jsRuntime.InvokeAsync<string>("sessionStorage.setItem", "key", "value");
+            Console.WriteLine("Session storage set successfully.");
+
+            Console.WriteLine("Attempting to get session storage...");
+            name = await jsRuntime.InvokeAsync<string>("sessionStorage.getItem", "key");
+            Console.WriteLine($"Session storage retrieved successfully. Name: {name}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            throw; // Rethrow the exception for further investigation
+        }
+    }
+
+}
